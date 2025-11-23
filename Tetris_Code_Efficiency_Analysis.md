@@ -1,122 +1,109 @@
-Tetris Code Efficiency Analysis
+##  1. Efficient Rendering Using a Single `<canvas>`
 
-The Tetris implementation is generally efficient because it uses
-lightweight data structures, minimal DOM manipulation, and optimized
-rendering techniques. The following points summarize its efficiency
-characteristics:
+The game uses **one canvas element** to draw the entire board and falling tetromino pieces.
 
-1.  Efficient Rendering Using a Single
-    ```{=html}
-    <canvas>
-    ```
+**Why this is efficient:**
+- Canvas operations are fast and pixel-based.
+- Browser repaints only one region → lower rendering cost.
+- Avoids heavy DOM creation/removal.
+- Uses `requestAnimationFrame()` for smooth, optimized rendering.
 
-The game uses one canvas element to draw the entire Tetris board and
-falling pieces. This is efficient because:
-
-Canvas operations are pixel-based and fast, especially for a small grid
-like 10×20.
-
-The browser only repaints one area, reducing layout and rendering
-overhead.
-
-No repeated creation or removal of DOM elements, avoiding expensive DOM
-updates.
-
-Using requestAnimationFrame() ensures drawing only occurs when the
-browser is ready, preventing unnecessary CPU usage.
-
-2.  Lightweight Data Structures (Matrices & Arrays)
-
-The board and pieces are stored as small 2D arrays (matrices):
-
-The Tetris board is only 10 columns × 20 rows → 200 cells.
-
-Each tetromino is also a small matrix (4×4 or smaller).
-
-Matrix operations such as rotation, collision detection, and merging are
-constant-time or very close to it.
-
-Because the grid is tiny, operations like scanning for full lines or
-clearing rows run extremely fast, even in JavaScript.
-
-3.  Optimized Game Loop
-
-The update loop:
-
+```javascript
+// Efficient animation loop
 requestAnimationFrame(update);
+```
 
-is efficient because:
+---
 
-It matches the screen refresh rate.
+##  2. Lightweight Data Structures (Matrices & Arrays)
 
-It pauses in inactive browser tabs automatically, saving resources.
+Tetris uses small matrices to store board and pieces:
 
-It avoids fixed-timer intervals like setInterval() which can generate
-unnecessary updates.
+- **Board size:** 10 × 20 → *only 200 cells*
+- **Tetromino size:** max 4 × 4
 
-The game calculates the time delta and only drops the piece when the
-drop interval is reached, minimizing calculations per frame.
+**Benefits:**
+- Fast rotation, collision detection, and merging.
+- Row checking is quick due to the tiny grid.
+- Very low CPU usage.
 
-4.  Minimal DOM Interaction
+---
 
-Only three text elements---score, level, and lines---are updated. This
-is efficient because frequent DOM manipulation is expensive, but here:
+##  3. Optimized Game Loop
 
-Updates occur only when needed (after a piece locks or lines clear).
+The game loop uses:
 
-No complex HTML reflows are triggered.
+```javascript
+requestAnimationFrame(update);
+```
 
-The gameplay stays smooth even on low-end devices.
+**Advantages:**
+- Syncs with the screen refresh rate.
+- Stops when the tab is inactive (resource saving).
+- Avoids unnecessary updates unlike `setInterval()`.
+- Drops pieces only when needed (time-based).
 
-5.  Efficient Collision and Line Checking
+---
 
-Collision detection is done by comparing the piece matrix with the board
-matrix. Because both matrices are tiny:
+##  4. Minimal DOM Interaction
 
-Checking overlaps is fast.
+Only UI elements like **score**, **level**, and **lines** are updated.
 
-Line clearing scans only 20 short rows.
+**This reduces:**
+- Layout recalculations  
+- Repainting  
+- Browser overhead  
 
-Using simple loops avoids heavy built-in functions that introduce
-overhead.
+---
 
-This results in very low CPU usage.
+##  5. Efficient Collision & Line Checking
 
-6.  Low Memory Usage
+Collision logic compares the piece’s matrix with the board matrix.
 
-The memory footprint is extremely small because:
+**Why it's fast:**
+- Both structures are small.
+- Simple loops (no heavy methods).
+- Clearing lines requires scanning only 20 rows.
 
-No large objects or unnecessary data structures are kept in memory.
+---
 
-Only one active piece is stored at a time.
+##  6. Low Memory Usage
 
-Cleared lines are removed immediately, preventing memory buildup.
+The game uses very little RAM because:
+- Only one active piece is stored at a time.
+- Cleared rows are immediately removed.
+- No large or persistent objects.
 
-The game can run smoothly even on devices with limited RAM.
+---
 
-7.  Efficient Redraw Strategy
+##  7. Efficient Redraw Strategy
 
-The canvas is cleared and redrawn each frame, which might seem
-expensive, but for a Tetris grid it is very cheap:
+The entire board is redrawn every frame, which is cheap because:
+- Only 200 blocks exist.
+- Each block is just a small colored rectangle.
+- Canvas batching improves rendering speed.
 
-Only 200 possible blocks to draw.
+---
 
-Each block is a small rectangle.
+##  8. No External Libraries
 
-Canvas batching avoids individual DOM node repainting.
+The game runs **without**:
+- Frameworks  
+- Heavy external scripts  
+- Large libraries  
 
-This full-redraw strategy is common in game engines and performs
-excellently for simple 2D games.
+**Benefits:**
+- Tiny bundle size  
+- Faster loading time  
+- Better performance  
 
-8.  No External Libraries
+---
 
-The game runs:
+##  Summary
 
-Without frameworks
-
-Without external heavy scripts
-
-Without unnecessary imports
-
-This keeps the bundle size minimal, loading times fast, and runtime
-performance high.
+The Tetris implementation is efficient due to:
+- Lightweight data structures  
+- Optimized rendering  
+- Minimal DOM updates  
+- Smart animation loop  
+- Low memory 
