@@ -1,8 +1,8 @@
-Replayability Review — *Tetris (Vanilla JavaScript)*  
+# Replayability Review — *Tetris (Vanilla JavaScript)*  
 
 ---
 
-## 🌐 Overview
+## Overview
 
 **Replayability** means: *Does this game make me want to play again and again?*
 
@@ -12,7 +12,7 @@ and add a few planning tools like **Next** and **Hold**.
 
 ---
 
-## 🔍 What I Checked
+## What I Checked
 - How fair the piece order feels  
 - How the speed changes over time (levels)  
 - How scoring feels  
@@ -22,14 +22,14 @@ and add a few planning tools like **Next** and **Hold**.
 
 ---
 
-## ✅ What Is Good
+## What Is Good
 - The core loop is fun: drop pieces, clear lines, and survive.  
 - Speed increases gradually, adding challenge.  
 - Controls are responsive and smooth.  
 
 ---
 
-## ⚙️ What Can Be Better for Replayability
+## What Can Be Better for Replayability
 - Piece order sometimes feels unfair (long wait for an I‑piece).  
 - Best score disappears after refresh.  
 - Restart takes extra steps—hurts the *“one more try”* feeling.  
@@ -38,9 +38,9 @@ and add a few planning tools like **Next** and **Hold**.
 
 ---
 
-## 💡 Suggestions (Step by Step)
+## Suggestions (Step by Step)
 
-### 🧱 Fair Piece Order — the “7‑Bag”
+### Fair Piece Order — the “7‑Bag”
 **Why:** avoids bad‑luck streaks and ensures fair distribution.  
 **Idea:** a bag with all 7 shapes is shuffled; pieces come out one‑by‑one, refill when empty.
 
