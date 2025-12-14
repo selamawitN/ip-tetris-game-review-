@@ -1,4 +1,4 @@
-# 🎮 Replayability Review — *Tetris (Vanilla JavaScript)*  
+Replayability Review — *Tetris (Vanilla JavaScript)*  
 
 ---
 
