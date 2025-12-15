@@ -1,7 +1,7 @@
 
 <h2>Input validation</h2>
    <p>Here’s how input validation works in the Tetris game. Since everything runs on the client, the main thing that matters is keeping the game logic tight—making sure you can’t break the rules, mostly through collision detection. That’s what keeps the game state from falling apart.</p>
-<p>Players can’t type in random text or enter anything outside the game controls. It’s all about the keyboard.</p>
+<p>Players can’t type in random text or enter anything outside the game controls. It’s all about the keyboard arrows.</p>
  <h3> I. Keyboard Input </h3>
 <p>Tetris listens for keyboard events—specifically, when you press or release a key. That’s how you move and rotate the tetromino pieces.</p>
 <h4>A. Allowed Keys and Actions:</h4>
