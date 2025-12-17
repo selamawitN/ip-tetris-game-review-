@@ -1,5 +1,4 @@
-# Code Logic and Flow (Code Review Explanation)
-
+# Code Logic and Flow 
 ## Overview
 This review evaluates the code logic and flow of the Tetris game implementation. Code logic and flow refer to the order in which the program executes actions and whether those actions follow the expected behavior of a Tetris game.
 
