@@ -12,7 +12,7 @@ and add a few planning tools like **Next** and **Hold**.
 
 ---
 
-## What I Checked
+## What we Checked
 - How fair the piece order feels  
 - How the speed changes over time (levels)  
 - How scoring feels  
@@ -63,6 +63,7 @@ function nextPieceType() {
 
 ```
 ### 🏆 Save and Show High Score
+**Idea:**  If you refresh the page and your best score (50,000) is gone, you lose the "Ghost" you were chasing.
 ```js
 const HIGH_KEY = 'tetrisHighScore';
 
@@ -76,6 +77,7 @@ function saveHighIfBetter(score) {
 }
 ```
 ### 🔄 Fast Restart (Keeps the Flow)
+**Idea:** If a player has to move their hand to the mouse, find a button, and click "Restart," they have time to think, "Maybe I should stop playing."
 ```js
 window.addEventListener('keydown', (e) => {
   if (gameOver && (e.code === 'Enter' || e.code === 'KeyR')) {
@@ -85,6 +87,7 @@ window.addEventListener('keydown', (e) => {
 });
 ```
 ### 🎯 Better Planning — More Next Pieces + Hold
+**Idea:** Sometimes you get a piece that will ruin your stack, but you need it for later.
 ```js
 let holdType = null;
 let canHold = true;  // reset to true when a piece locks
@@ -104,6 +107,7 @@ function holdSwap() {
 }
 ```
 ###  ⚡ Smoother Level Speed
+**Idea:** If Level 1 is slow and Level 2 is suddenly 2x faster, the player feels overwhelmed.
 ```js
 function dropSpeedMs(level) {
   const start = 1000;  // 1 second
